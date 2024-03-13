@@ -10,6 +10,8 @@ import 'blocs/language/language_select_state.dart';
 import 'blocs/theme/theme_cubit.dart';
 import 'constants/constants.dart';
 import 'routes/app_pages.dart';
+import 'routes/app_route_delegate.dart';
+import 'routes/app_route_infomation_parser.dart';
 import 'translations/app_translations.dart';
 import 'ui/widgets/loading_full_screen.dart';
 import 'utils/utils.dart';
@@ -41,7 +43,7 @@ class _AppState extends State<App> with WidgetsBindingObserver implements bloc.B
     bloc.Bloc.observer = this;
     _initialBlocs();
     WidgetsBinding.instance.addObserver(this);
-    AppDeviceInfo.init();
+    // AppDeviceInfo.init();
     // FirebaseService().init();
   }
 
@@ -75,16 +77,17 @@ class _AppState extends State<App> with WidgetsBindingObserver implements bloc.B
         child: bloc.BlocBuilder<ThemeCubit, ThemeState>(
           bloc: getx.Get.find<ThemeCubit>(),
           builder: (BuildContext context, ThemeState state) {
-            return getx.GetMaterialApp(
+            return getx.GetMaterialApp.router(
               debugShowCheckedModeBanner: false,
               theme: (state.mode == ThemeMode.light ? state.lightTheme : state.darkTheme).copyWith(
                 scaffoldBackgroundColor: AppColors.getWhiteAndBlack,
               ),
               title: APP_NAME,
-              initialRoute: Routes.SPLASH,
+              // initialRoute: Routes.SPLASH,
               defaultTransition: getx.Transition.cupertino,
-              getPages: AppPages.pages,
               locale: getx.Get.find<LanguageCubit>().state.locale,
+              routerDelegate: AppRouteDelegate(),
+              routeInformationParser: AppRouteInformationParser(),
               translationsKeys: AppTranslation.translations,
               builder: (BuildContext context, Widget? child) {
                 return LoadingFullScreen(child: child!);

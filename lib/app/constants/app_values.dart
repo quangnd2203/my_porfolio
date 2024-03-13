@@ -61,8 +61,8 @@ final List<LanguageSelectState> appLanguages = <LanguageSelectState>[
 
 const int INDEX_NOT_FOUND = -1;
 
-const List<String> AUTHORIZED_ROUTES = <String>[
-  Routes.LOGIN,
-  Routes.SPLASH,
-  Routes.CHANGE_PIN,
+List<String> AUTHORIZED_ROUTES = <String>[
+  // Routes.LOGIN,
+  Routes.home.route,
+  // Routes.CHANGE_PIN,
 ];

@@ -9,8 +9,9 @@ import 'blocs/language/language_cubit.dart';
 import 'blocs/language/language_select_state.dart';
 import 'blocs/theme/theme_cubit.dart';
 import 'constants/constants.dart';
-import 'routes/app_route_delegate.dart';
+import 'routes/app_pages.dart';
 import 'routes/app_route_infomation_parser.dart';
+import 'routes/app_routes.dart';
 import 'translations/app_translations.dart';
 import 'ui/widgets/loading_full_screen.dart';
 
@@ -81,11 +82,14 @@ class _AppState extends State<App> with WidgetsBindingObserver implements bloc.B
                 scaffoldBackgroundColor: AppColors.getWhiteAndBlack,
               ),
               title: APP_NAME,
+              getPages: AppPages.pages,
               // initialRoute: Routes.SPLASH,
               defaultTransition: getx.Transition.cupertino,
               locale: getx.Get.find<LanguageCubit>().state.locale,
-              routerDelegate: AppRouteDelegate(),
-              routeInformationParser: AppRouteInformationParser(),
+              routeInformationParser: AppRouteInformationParser(
+                initialRoute: Routes.home.route,
+              ),
+              routerDelegate: getx.GetDelegate(),
               translationsKeys: AppTranslation.translations,
               builder: (BuildContext context, Widget? child) {
                 return LoadingFullScreen(child: child!);

@@ -1,6 +1,7 @@
-// ignore_for_file: library_private_types_in_public_api, avoid_print
+// ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:logger/logger.dart';
@@ -10,6 +11,7 @@ import 'app/constants/constants.dart';
 import 'app/utils/utils.dart';
 
 Future<void> main() async {
+  usePathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
   initializeDateFormatting('en');
   initializeDateFormatting('vi');

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../../constants/app_images.dart';
-import '../../routes/app_pages.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.text});

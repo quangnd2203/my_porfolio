@@ -138,4 +138,3 @@ class AppColors {
 
   static Color get getSupportScreenTextColor => Get.find<ThemeCubit>().isDarkMode ? const Color(0xFFe6e6e6) : const Color(0xFF484848);
 }
-

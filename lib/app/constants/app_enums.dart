@@ -19,4 +19,3 @@ enum SizeUnit {
   final int value;
   final String name;
 }
-

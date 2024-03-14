@@ -2,10 +2,7 @@
 
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart';
-import '../../blocs/authentication/authentication_cubit.dart';
 import '../../constants/app_endpoint.dart';
-import '../../constants/app_values.dart';
-import '../../routes/app_pages.dart';
 import 'error_body_model.dart';
 
 typedef NetworkStateConverter<T> = T Function(dynamic json);

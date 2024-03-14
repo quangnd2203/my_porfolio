@@ -1,4 +1,5 @@
-import 'app_pages.dart';
+
+import 'app_routes.dart';
 
 class AppRoutePath{
 

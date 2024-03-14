@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../ui/home/home_screen.dart';
 import '../ui/unknown/unknown_screen.dart';
-import 'app_pages.dart';
 import 'app_route_path.dart';
+import 'app_routes.dart';
 
 class AppRouteDelegate extends RouterDelegate<AppRoutePath>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin<AppRoutePath> {
@@ -21,12 +20,9 @@ class AppRouteDelegate extends RouterDelegate<AppRoutePath>
   Widget build(BuildContext context) {
     return Navigator(
       key: navigatorKey,
-      onGenerateRoute: (RouteSettings settings) {
-        return MaterialPageRoute<dynamic>(
-          settings: settings,
-          builder: (BuildContext context) => const UnknownScreen(),
-        );
-      },
+      pages: <Page<dynamic>>[
+        getPage(),
+      ],
       onPopPage: (Route<dynamic> route, dynamic result) {
         if (!route.didPop(result)) {
           return false;
@@ -43,14 +39,15 @@ class AppRouteDelegate extends RouterDelegate<AppRoutePath>
     notifyListeners();
   }
 
-  Page<dynamic>? getPage() {
+  Page<dynamic> getPage() {
     if (_selectedPath.isAccountPage) {
-      return MaterialPage(
-          child: const HomeScreen(text: 'account'), name: Routes.account.route, key: ValueKey(Routes.account.route));
+      return MaterialPage<dynamic>(
+          child: const HomeScreen(text: 'account'), name: Routes.account.route, key: ValueKey<dynamic>(Routes.account.route));
     }
-    if (_selectedPath.unKnown) {
-      return MaterialPage(
-          child: const UnknownScreen(), name: Routes.unknown.route, key: ValueKey(Routes.unknown.route));
+    if (_selectedPath.isHomePage) {
+      return MaterialPage<dynamic>(
+          child: const HomeScreen(text: 'home'), name: Routes.home.route, key: ValueKey<dynamic>(Routes.home.route));
     }
+    return MaterialPage<dynamic>(child: const UnknownScreen(), name: Routes.unknown.route, key: ValueKey<dynamic>(Routes.unknown.route));
   }
 }

@@ -1,11 +1,5 @@
 // ignore_for_file: avoid_dynamic_calls, deprecated_member_use
 
-import 'package:dio/dio.dart';
-
-import '../../constants/app_endpoint.dart';
-import '../../utils/app_clients.dart';
-import '../resources.dart';
-
 class AuthRepository {
   factory AuthRepository() {
     _instance ??= AuthRepository._();

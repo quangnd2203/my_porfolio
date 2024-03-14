@@ -33,7 +33,7 @@ class CustomOutlinedButton extends StatelessWidget {
     final Widget child = Center(
       child: Text(title.tr,
           textAlign: TextAlign.center,
-          style: textStyle ?? (AppTextStyles.rubikRegular).copyWith(color: textColor ?? Theme.of(context).textTheme.bodyLarge!.color!, fontSize: AppFontSize.fontTextBig)),
+          style: textStyle ?? AppTextStyles.rubikRegular.copyWith(color: textColor ?? Theme.of(context).textTheme.bodyLarge!.color!, fontSize: AppFontSize.fontTextBig)),
     );
     return Container(
       width: width,

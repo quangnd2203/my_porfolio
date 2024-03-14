@@ -5,9 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
-import '../../resources/model/model.dart';
 import '../../ui/widgets/dialog/app_dialog.dart';
-import '../../utils/app_pref.dart';
 
 part 'application_state.dart';
 part 'application_action_helper.dart';

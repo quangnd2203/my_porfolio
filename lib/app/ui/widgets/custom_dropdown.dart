@@ -76,10 +76,9 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
+    return PopScope(
+      onPopInvoked: (bool value) {
         closeOverlay();
-        return true;
       },
       child: InkWell(
         key: key,

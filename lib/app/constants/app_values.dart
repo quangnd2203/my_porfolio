@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../blocs/language/language_select_state.dart';
 import '../extensions/extensions.dart';
-import '../routes/app_pages.dart';
+import '../routes/app_routes.dart';
 import 'app_images.dart';
 
 double get viewPaddingTop => Get.mediaQuery.viewPadding.top;
@@ -61,7 +61,7 @@ final List<LanguageSelectState> appLanguages = <LanguageSelectState>[
 
 const int INDEX_NOT_FOUND = -1;
 
-List<String> AUTHORIZED_ROUTES = <String>[
+List<String> authorizedRoutes = <String>[
   // Routes.LOGIN,
   Routes.home.route,
   // Routes.CHANGE_PIN,

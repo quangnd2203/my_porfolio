@@ -9,12 +9,10 @@ import 'blocs/language/language_cubit.dart';
 import 'blocs/language/language_select_state.dart';
 import 'blocs/theme/theme_cubit.dart';
 import 'constants/constants.dart';
-import 'routes/app_pages.dart';
 import 'routes/app_route_delegate.dart';
 import 'routes/app_route_infomation_parser.dart';
 import 'translations/app_translations.dart';
 import 'ui/widgets/loading_full_screen.dart';
-import 'utils/utils.dart';
 
 class App extends StatefulWidget {
   const App({super.key});

@@ -1,15 +1,15 @@
 version: '3'
 services:
   #Flutter Web Boilerplate
-  web_bloc_boilerplate:
-    container_name: web_bloc_boilerplate
+  my_porfolio:
+    container_name: my_porfolio
     build:
       context: .
       dockerfile: ./DockerFile
     ports:
       - 8080:80
     volumes: 
-      - ./:/web_bloc_boilerplate
+      - ./:/my_porfolio
     tty: true
     environment: 
       - TZ=Asia/HoChiMinh

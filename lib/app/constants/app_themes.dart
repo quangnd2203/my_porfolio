@@ -7,8 +7,8 @@ class AppThemes {
 
   static ThemeData light = ThemeData(
     brightness: Brightness.light,
-    fontFamily: 'Roboto',
-    primaryColor: const Color(0xFF003E47),
+    fontFamily: 'Lekton',
+    primaryColor: AppColors.primary,
     secondaryHeaderColor: const Color(0xFFCFEC7E),
     highlightColor: const Color(0xFF003E47),
     primaryColorDark: Colors.black,
@@ -23,7 +23,7 @@ class AppThemes {
   );
 
   static ThemeData dark = ThemeData(
-    fontFamily: 'Roboto',
+    fontFamily: 'Lekton',
     primaryColor: const Color(0xFF689da7),
     brightness: Brightness.dark,
     secondaryHeaderColor: const Color(0xFFaaa818),

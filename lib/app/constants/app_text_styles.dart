@@ -20,10 +20,17 @@ class AppTextStyles {
         fontWeight: FontWeight.w700,
       );
 
-  static TextStyle get2xlStyle(TextStyle textStyle) {
+  static TextStyle get2xlPlusStyle(TextStyle textStyle) {
     return textStyle.copyWith(
       fontSize: 28,
       height: 3.6,
+    );
+  }
+
+  static TextStyle get2xlStyle(TextStyle textStyle) {
+    return textStyle.copyWith(
+      fontSize: 24,
+      height: 3.2,
     );
   }
 

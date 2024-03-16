@@ -10,9 +10,11 @@ import 'blocs/language/language_select_state.dart';
 import 'blocs/theme/theme_cubit.dart';
 import 'constants/constants.dart';
 import 'routes/app_pages.dart';
+import 'routes/app_route_delegate.dart';
 import 'routes/app_route_infomation_parser.dart';
 import 'routes/app_routes.dart';
 import 'translations/app_translations.dart';
+import 'ui/navigation/navigation_screen.dart';
 import 'ui/widgets/loading_full_screen.dart';
 
 class App extends StatefulWidget {
@@ -78,9 +80,7 @@ class _AppState extends State<App> with WidgetsBindingObserver implements bloc.B
           builder: (BuildContext context, ThemeState state) {
             return getx.GetMaterialApp.router(
               debugShowCheckedModeBanner: false,
-              theme: (state.mode == ThemeMode.light ? state.lightTheme : state.darkTheme).copyWith(
-                scaffoldBackgroundColor: AppColors.getWhiteAndBlack,
-              ),
+              theme: (state.mode == ThemeMode.light ? state.lightTheme : state.darkTheme),
               title: APP_NAME,
               getPages: AppPages.pages,
               // initialRoute: Routes.SPLASH,
@@ -89,10 +89,14 @@ class _AppState extends State<App> with WidgetsBindingObserver implements bloc.B
               routeInformationParser: AppRouteInformationParser(
                 initialRoute: Routes.home.route,
               ),
-              routerDelegate: getx.GetDelegate(),
+              routerDelegate: AppRouteDelegate(),
               translationsKeys: AppTranslation.translations,
               builder: (BuildContext context, Widget? child) {
-                return LoadingFullScreen(child: child!);
+                return LoadingFullScreen(
+                  child: NavigationScreen(
+                    child: child!,
+                  ),
+                );
               },
             );
           },

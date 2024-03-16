@@ -46,16 +46,16 @@ final List<Color> availablePickerColors = <Color>[
 
 final List<LanguageSelectState> appLanguages = <LanguageSelectState>[
   LanguageSelectState(
-    imageUrl: AppImages.png('vietnam'),
-    languageName: 'Tiếng Việt',
-    languageCode: AppLocale.vi.value.languageCode,
-    countryCode: AppLocale.vi.value.countryCode,
-  ),
-  LanguageSelectState(
     imageUrl: AppImages.png('english'),
     languageName: 'English',
     languageCode: AppLocale.en.value.languageCode,
     countryCode: AppLocale.en.value.countryCode,
+  ),
+  LanguageSelectState(
+    imageUrl: AppImages.png('vietnam'),
+    languageName: 'Tiếng Việt',
+    languageCode: AppLocale.vi.value.languageCode,
+    countryCode: AppLocale.vi.value.countryCode,
   ),
 ];
 
@@ -65,4 +65,12 @@ List<String> authorizedRoutes = <String>[
   // Routes.LOGIN,
   Routes.home.route,
   // Routes.CHANGE_PIN,
+];
+
+const List<String> NAVIGATION_MENU = <String>[
+  'about',
+  'skills',
+  'projects',
+  'experience',
+  'blog',
 ];

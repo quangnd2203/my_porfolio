@@ -62,7 +62,7 @@ class ImageNetwork extends StatelessWidget {
                 height: height,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(borderRadius),
-                  border: Border.all(color: AppColors.borderLight),
+                  border: Border.all(color: AppColors.gray),
                 ),
                 child: const Center(
                   child: CircularProgressIndicator(),
@@ -74,7 +74,7 @@ class ImageNetwork extends StatelessWidget {
                 height: height,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(borderRadius),
-                  border: Border.all(color: AppColors.borderLight),
+                  border: Border.all(color: AppColors.gray),
                   image: DecorationImage(
                     image: AssetImage(AppImages.png('error')),
                     fit: BoxFit.fitHeight,

@@ -6,7 +6,7 @@ mixin ResponsiveScreen{
     return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints){
       if(constraints.maxWidth <= 480)
         return buildMobile(context);
-      else if(constraints.maxWidth < 1125)
+      else if(constraints.maxWidth <= 1249)
         return buildTablet(context);
       return buildDesktop(context);
     });

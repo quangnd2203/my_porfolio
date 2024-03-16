@@ -23,49 +23,42 @@ class AppTextStyles {
   static TextStyle get2xlPlusStyle(TextStyle textStyle) {
     return textStyle.copyWith(
       fontSize: 28,
-      height: 3.6,
     );
   }
 
   static TextStyle get2xlStyle(TextStyle textStyle) {
     return textStyle.copyWith(
       fontSize: 24,
-      height: 3.2,
     );
   }
 
   static TextStyle getXlStyle(TextStyle textStyle) {
     return textStyle.copyWith(
       fontSize: 20,
-      height: 2.8,
     );
   }
 
   static TextStyle getLgStyle(TextStyle textStyle) {
     return textStyle.copyWith(
       fontSize: 18,
-      height: 2.8,
     );
   }
 
   static TextStyle getBaseStyle(TextStyle textStyle) {
     return textStyle.copyWith(
       fontSize: 16,
-      height: 2.4,
     );
   }
 
   static TextStyle getSmStyle(TextStyle textStyle) {
     return textStyle.copyWith(
       fontSize: 14,
-      height: 2.0,
     );
   }
 
   static TextStyle getXsStyle(TextStyle textStyle) {
     return textStyle.copyWith(
       fontSize: 12,
-      height: 1.6,
     );
   }
 }

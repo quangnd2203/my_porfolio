@@ -17,19 +17,21 @@ class AppColors {
         900: Color(0xFF101828),
       });
 
-  static MaterialColor get primary => const MaterialColor(0xFF25B81D, <int, Color>{
-        25: Color(0xFFd3f1d2),
-        50: Color(0xFFA8E3A5),
-        100: Color(0xFF7CD477),
-        200: Color(0xFF66CD61),
-        300: Color(0xFF51C64A),
-        400: Color(0xFF3BBF34),
-        500: Color(0xFF25B81D),
-        600: Color(0xFF1E9317),
-        700: Color(0xFF166E11),
-        800: Color(0xFF0F4A0C),
-        900: Color(0xFF041203),
-      });
+  // static MaterialColor get primary => const MaterialColor(0xFF25B81D, <int, Color>{
+  //       25: Color(0xFFd3f1d2),
+  //       50: Color(0xFFA8E3A5),
+  //       100: Color(0xFF7CD477),
+  //       200: Color(0xFF66CD61),
+  //       300: Color(0xFF51C64A),
+  //       400: Color(0xFF3BBF34),
+  //       500: Color(0xFF25B81D),
+  //       600: Color(0xFF1E9317),
+  //       700: Color(0xFF166E11),
+  //       800: Color(0xFF0F4A0C),
+  //       900: Color(0xFF041203),
+  //     });
+
+  static MaterialColor get primary => Colors.blue;
 
   static MaterialColor get error => const MaterialColor(0xFFFD4438, <int, Color>{
         25: Color(0xFFFFFBFA),

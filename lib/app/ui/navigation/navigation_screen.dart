@@ -33,10 +33,10 @@ class _NavigationScreenState extends State<NavigationScreen> with ResponsiveScre
   Widget buildSwitchButton() {
     return BlocSelector<ThemeCubit, ThemeState, ThemeMode>(
       bloc: getx.Get.find<ThemeCubit>(),
-      selector: (ThemeState state){
+      selector: (ThemeState state) {
         return state.mode;
       },
-      builder: (BuildContext context, ThemeMode themeMode){
+      builder: (BuildContext context, ThemeMode themeMode) {
         return SwitchButton(
           value: themeMode == ThemeMode.light,
           inactiveToggleWidget: const SizedBox(),
@@ -57,9 +57,26 @@ class _NavigationScreenState extends State<NavigationScreen> with ResponsiveScre
     );
   }
 
+  Widget buildPageNavigationBar({required Widget child}) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 16),
+      decoration: BoxDecoration(
+        color: Theme.of(context).scaffoldBackgroundColor,
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: AppColors.primary.withOpacity(0.15),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
+          )
+        ],
+      ),
+      child: child,
+    );
+  }
+
   Widget buildLogo() {
     return InkWell(
-      onTap: (){
+      onTap: () {
         AppRouteDelegate().toNamed(Routes.account.route);
       },
       child: Text(
@@ -70,17 +87,42 @@ class _NavigationScreenState extends State<NavigationScreen> with ResponsiveScre
   }
 
   Widget buildDesktopNavigationBar() {
-    return Row(
-      children: <Widget>[
-        buildLogo(),
-        const SizedBox(
-          width: 26,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 104),
+      child: Center(
+        child: SizedBox(
+          width: DESKTOP_PAGE_MAX_WIDTH,
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                flex: 4,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    buildLogo(),
+                    const SizedBox(
+                      width: 26,
+                    ),
+                    buildSwitchButton(),
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 8,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    ...buildDesktopMenu(),
+                    CustomOutlinedButton(
+                      title: 'contact_me'.tr,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
-        buildSwitchButton(),
-        const Spacer(),
-        ...buildDesktopMenu(),
-        CustomOutlinedButton(title: 'contact_me'.tr,),
-      ],
+      ),
     );
   }
 
@@ -92,53 +134,63 @@ class _NavigationScreenState extends State<NavigationScreen> with ResponsiveScre
           text.tr,
           style: AppTextStyles.getBaseStyle(
             isSelected ? AppTextStyles.bold : AppTextStyles.regular,
-          ).copyWith(color: isSelected ? AppColors.gray.shade600 : AppColors.gray),
+          ).copyWith(color: getx.Get.find<ThemeCubit>().state.mode == ThemeMode.light ? AppColors.gray : AppColors.white),
         ),
       );
     }
+
     return NAVIGATION_MENU.map((String e) => buildTitle(e, isSelected: e == NAVIGATION_MENU.first)).toList();
   }
 
   @override
   Widget buildDesktop(BuildContext context) {
-    return Center(
-      child: Container(
-        width: 1200,
-        padding: const EdgeInsets.symmetric(horizontal: 104),
-        child: Column(
-          children: <Widget>[
-            buildDesktopNavigationBar(),
-            Expanded(child: widget.child),
-          ],
+    return Column(
+      children: <Widget>[
+        buildPageNavigationBar(
+          child: buildDesktopNavigationBar(),
         ),
-      ),
+        const SizedBox(
+          height: 16,
+        ),
+        Expanded(child: widget.child),
+      ],
     );
   }
 
   Widget buildMobileNavigationBar() {
-    return Row(
-      children: <Widget>[
-        buildSwitchButton(),
-        Expanded(
-          child: Center(
-            child: buildLogo(),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Center(
+        child: SizedBox(
+          width: MOBILE_PAGE_MAX_WIDTH,
+          child: Row(
+            children: <Widget>[
+              buildSwitchButton(),
+              Expanded(
+                child: Center(
+                  child: buildLogo(),
+                ),
+              ),
+              SvgPicture.asset(AppImages.svg('navigation_setting'))
+            ],
           ),
         ),
-        SvgPicture.asset(AppImages.svg('navigation_setting'))
-      ],
+      ),
     );
   }
 
   @override
   Widget buildMobile(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
-        children: <Widget>[
-          buildMobileNavigationBar(),
-          Expanded(child: widget.child),
-        ],
-      ),
+    return Column(
+      children: <Widget>[
+        buildPageNavigationBar(
+          child: buildMobileNavigationBar(),
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        Expanded(child: widget.child),
+      ],
     );
   }
 

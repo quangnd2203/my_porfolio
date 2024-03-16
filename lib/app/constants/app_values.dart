@@ -74,3 +74,7 @@ const List<String> NAVIGATION_MENU = <String>[
   'experience',
   'blog',
 ];
+
+const double MOBILE_PAGE_MAX_WIDTH = 480;
+const double DESKTOP_PAGE_MAX_WIDTH = 1072;
+const double DESKTOP_PAGE_MAX_HEIGHT = 696;

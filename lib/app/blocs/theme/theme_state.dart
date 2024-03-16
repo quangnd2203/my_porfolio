@@ -15,6 +15,8 @@ class ThemeState extends Equatable {
     );
   }
 
+  bool get isDarkMode => mode == ThemeMode.dark;
+
   @override
   List<Object?> get props => <Object>[mode, lightTheme, darkTheme];
 }

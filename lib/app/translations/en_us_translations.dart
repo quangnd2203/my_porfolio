@@ -5,5 +5,7 @@ final Map<String, String> enUs = <String, String>{
   'projects': 'Projects',
   'experience': 'Experience',
   'blog': 'Blog',
-  'contact_me': 'Contact Me'
+  'contact_me': 'Contact Me',
+  'hire_me': 'Hire Me',
+  'download_cv': 'Download CV',
 };

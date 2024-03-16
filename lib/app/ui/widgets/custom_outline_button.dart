@@ -16,7 +16,7 @@ class CustomOutlinedButton extends StatelessWidget {
     this.borderColor,
     this.textColor,
     this.boxShadow,
-    this.padding = const EdgeInsets.symmetric(horizontal: 16)
+    this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 8)
   });
   final VoidCallback? action;
   final String title;

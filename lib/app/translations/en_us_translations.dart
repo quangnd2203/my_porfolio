@@ -9,4 +9,8 @@ final Map<String, String> enUs = <String, String>{
   'hire_me': 'Hire Me',
   'download_cv': 'Download CV',
   'login': 'Login',
+  'about_me': 'About Me',
+  'my_skills': 'My Skills',
+  'my_projects': 'My Projects',
+  'work_experience': 'Work Experience',
 };

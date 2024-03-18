@@ -11,8 +11,8 @@ import '../../../constants/app_text_styles.dart';
 import '../../../constants/app_values.dart';
 import '../../widgets/custom_outline_button.dart';
 
-class DesktopInfoCard extends StatelessWidget {
-  const DesktopInfoCard({super.key});
+class InfoCardDesktop extends StatelessWidget {
+  const InfoCardDesktop({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class DesktopInfoCard extends StatelessWidget {
                 height: 24,
               ),
               Text(
-                '< Ariful Islam />',
+                '<Nguyen Dang Quang/>',
                 style: AppTextStyles.get2xlPlusStyle(AppTextStyles.bold).copyWith(color: isDarkMode ? AppColors.white : AppColors.gray.shade600),
               ),
               const SizedBox(

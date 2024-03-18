@@ -86,16 +86,16 @@ class _NavigationScreenState extends State<NavigationScreen> with ResponsiveScre
     );
   }
 
-  Widget buildDesktopNavigationBar() {
+  Widget buildDesktopNavigationBar([int logoFlex = 4, int menuFlex = 8]) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 104),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Center(
         child: SizedBox(
           width: DESKTOP_PAGE_MAX_WIDTH,
           child: Row(
             children: <Widget>[
               Expanded(
-                flex: 4,
+                flex: logoFlex,
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
@@ -108,9 +108,9 @@ class _NavigationScreenState extends State<NavigationScreen> with ResponsiveScre
                 ),
               ),
               Expanded(
-                flex: 8,
+                flex: menuFlex,
                 child: Row(
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     ...buildDesktopMenu(),
                     CustomOutlinedButton(
@@ -128,14 +128,11 @@ class _NavigationScreenState extends State<NavigationScreen> with ResponsiveScre
 
   List<Widget> buildDesktopMenu() {
     Widget buildTitle(String text, {bool isSelected = false}) {
-      return Padding(
-        padding: const EdgeInsets.only(right: 48),
-        child: Text(
-          text.tr,
-          style: AppTextStyles.getBaseStyle(
-            isSelected ? AppTextStyles.bold : AppTextStyles.regular,
-          ).copyWith(color: getx.Get.find<ThemeCubit>().state.mode == ThemeMode.light ? AppColors.gray : AppColors.white),
-        ),
+      return Text(
+        text.tr,
+        style: AppTextStyles.getBaseStyle(
+          isSelected ? AppTextStyles.bold : AppTextStyles.regular,
+        ).copyWith(color: getx.Get.find<ThemeCubit>().state.mode == ThemeMode.light ? AppColors.gray : AppColors.white),
       );
     }
 
@@ -196,6 +193,16 @@ class _NavigationScreenState extends State<NavigationScreen> with ResponsiveScre
 
   @override
   Widget buildTablet(BuildContext context) {
-    return buildMobile(context);
+    return Column(
+      children: <Widget>[
+        buildPageNavigationBar(
+          child: buildDesktopNavigationBar(3, 9),
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        Expanded(child: widget.child),
+      ],
+    );
   }
 }

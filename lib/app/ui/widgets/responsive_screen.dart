@@ -4,9 +4,10 @@ mixin ResponsiveScreen{
 
   Widget buildResponsiveScreen(BuildContext context){
     return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints){
-      if(constraints.maxWidth <= 480)
+      final double maxWidth = MediaQuery.of(context).size.width;
+      if(maxWidth <= 877)
         return buildMobile(context);
-      else if(constraints.maxWidth <= 1249)
+      else if(maxWidth <= 1091)
         return buildTablet(context);
       return buildDesktop(context);
     });

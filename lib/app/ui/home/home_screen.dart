@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../constants/app_values.dart';
 import '../widgets/responsive_screen.dart';
-import 'widget/desktop_info_card.dart';
+import 'widget/info_card.dart';
+import 'widget/info_card_desktop.dart';
+import 'widget/info_card_mobile.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.text});
@@ -32,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> with ResponsiveScreen {
   @override
   Widget buildDesktop(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 104),
+      padding: EdgeInsets.symmetric(horizontal: 16),
       child: Center(
         child: SizedBox(
           width: DESKTOP_PAGE_MAX_WIDTH,
@@ -42,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> with ResponsiveScreen {
                 flex: 5,
                 child: Align(
                   alignment: Alignment.topLeft,
-                  child: DesktopInfoCard(),
+                  child: InfoCard(),
                 ),
               ),
               Expanded(
@@ -60,11 +62,24 @@ class _HomeScreenState extends State<HomeScreen> with ResponsiveScreen {
 
   @override
   Widget buildMobile(BuildContext context) {
-    throw UnimplementedError();
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: Center(
+        child: SizedBox(
+          width: MOBILE_PAGE_MAX_WIDTH,
+          child: Column(
+            children: [
+              SizedBox(height: 16,),
+              InfoCard()
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   @override
   Widget buildTablet(BuildContext context) {
-    return buildMobile(context);
+    return buildDesktop(context);
   }
 }

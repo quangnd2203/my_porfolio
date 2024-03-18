@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -23,9 +24,13 @@ class NavigationScreen extends StatefulWidget {
 }
 
 class _NavigationScreenState extends State<NavigationScreen> with ResponsiveScreen {
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
+      endDrawer: buildMobileMenu(),
       body: buildResponsiveScreen(context),
     );
   }
@@ -114,7 +119,7 @@ class _NavigationScreenState extends State<NavigationScreen> with ResponsiveScre
                   children: <Widget>[
                     ...buildDesktopMenu(),
                     CustomOutlinedButton(
-                      title: 'contact_me'.tr,
+                      title: 'login'.tr,
                     ),
                   ],
                 ),
@@ -168,9 +173,51 @@ class _NavigationScreenState extends State<NavigationScreen> with ResponsiveScre
                   child: buildLogo(),
                 ),
               ),
-              SvgPicture.asset(AppImages.svg('navigation_setting'))
+              InkWell(
+                child: SvgPicture.asset(
+                  AppImages.svg('navigation_setting'),
+                ),
+                onTap: () {
+                  scaffoldKey.currentState!.openEndDrawer();
+                },
+              )
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildMobileMenu(){
+    Widget buildTitle(String text, {bool isSelected = false}) {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Text(
+            text.tr,
+            style: AppTextStyles.getSmStyle(
+              isSelected ? AppTextStyles.bold : AppTextStyles.regular,
+            ).copyWith(color: getx.Get.find<ThemeCubit>().state.mode == ThemeMode.light ? AppColors.gray : AppColors.white),
+          ),
+          const Divider(),
+        ],
+      );
+    }
+
+    return Container(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      width: MediaQuery.of(context).size.width * 0.8,
+      height: MediaQuery.of(context).size.height,
+      padding: const EdgeInsets.all(16),
+      child: SingleChildScrollView(
+        child: Column(
+          children: NAVIGATION_MENU.map((String e) => buildTitle(e, isSelected: e == NAVIGATION_MENU.first)).toList() + [
+            const SizedBox(height: 20,),
+            CustomOutlinedButton(
+              title: 'login'.tr,
+              textStyle: AppTextStyles.getBaseStyle(AppTextStyles.bold),
+            ),
+          ],
         ),
       ),
     );

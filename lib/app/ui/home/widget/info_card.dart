@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart' as getx;
@@ -226,7 +224,7 @@ class _Mobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 400,
+      width: 376,
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(12),
@@ -239,7 +237,7 @@ class _Mobile extends StatelessWidget {
         ],
       ),
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16).copyWith(right: 4),
         decoration: BoxDecoration(
           color: isDarkMode ? AppColors.white.withOpacity(0.1) : AppColors.white,
           borderRadius: BorderRadius.circular(12),
@@ -256,9 +254,9 @@ class _Mobile extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      '<Nguyen Dang Quang/>',
-                      style: AppTextStyles.getXlStyle(AppTextStyles.bold)
-                          .copyWith(color: isDarkMode ? AppColors.white : AppColors.gray.shade600),
+                      'Nguyen Dang Quang',
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.getXlStyle(AppTextStyles.bold).copyWith(color: AppColors.primary.shade600),
                     ),
                     const SizedBox(
                       height: 4,
@@ -316,25 +314,26 @@ class _Mobile extends StatelessWidget {
   }
 
   Widget buildCommentDownload() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          SvgPicture.asset(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        IconButton(
+          icon: SvgPicture.asset(
             AppImages.svg('download'),
-            height: 20,
-            fit: BoxFit.fill,
+            width: 18,
             color: isDarkMode ? AppColors.white : AppColors.gray.shade600,
           ),
-          SvgPicture.asset(
+          onPressed: () {},
+        ),
+        IconButton(
+          icon: SvgPicture.asset(
             AppImages.svg('comment'),
-            height: 20,
-            fit: BoxFit.fill,
+            width: 18,
             color: isDarkMode ? AppColors.white : AppColors.gray.shade600,
           ),
-        ],
-      ),
+          onPressed: () {},
+        ),
+      ],
     );
   }
 }

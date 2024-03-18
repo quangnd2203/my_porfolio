@@ -230,9 +230,6 @@ class _NavigationScreenState extends State<NavigationScreen> with ResponsiveScre
         buildPageNavigationBar(
           child: buildMobileNavigationBar(),
         ),
-        const SizedBox(
-          height: 16,
-        ),
         Expanded(child: widget.child),
       ],
     );

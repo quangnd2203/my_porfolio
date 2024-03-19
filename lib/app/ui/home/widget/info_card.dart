@@ -263,7 +263,7 @@ class _Mobile extends StatelessWidget {
                       height: 4,
                     ),
                     Text(
-                      'Flutter Developer',
+                      'Software Engineer',
                       style: AppTextStyles.getXsStyle(AppTextStyles.regular)
                           .copyWith(color: isDarkMode ? AppColors.warring : AppColors.secondary),
                     ),

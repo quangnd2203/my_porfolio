@@ -74,43 +74,64 @@ class HomeAbout extends StatelessWidget with ResponsiveScreen {
 
   Widget buildAchievements({bool isMobile = false}) {
     Widget buildItem(String value, String title) {
-      return Container(
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
+      return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
+        return Container(
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: isDarkMode ? AppColors.white.withOpacity(0.1) : AppColors.primary.withOpacity(0.15),
+            ),
             color: isDarkMode ? AppColors.white.withOpacity(0.1) : AppColors.primary.withOpacity(0.15),
           ),
-          color: isDarkMode ? AppColors.white.withOpacity(0.1) : AppColors.primary.withOpacity(0.15),
-        ),
-        child: Center(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text(
-                value,
-                style: (isMobile
-                        ? AppTextStyles.get2xlPlusStyle(AppTextStyles.bold)
-                        : AppTextStyles.getHeadingStyle(AppTextStyles.bold))
-                    .copyWith(color: isDarkMode ? AppColors.white : AppColors.gray.shade600),
-              ),
-              const SizedBox(
-                width: 16,
-              ),
-              Text(
-                title.tr,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: (isMobile
-                    ? AppTextStyles.getXlStyle(AppTextStyles.medium)
-                    : AppTextStyles.get2xlStyle(AppTextStyles.medium)).copyWith(
-                  color: AppColors.primary,
+          child: Center(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Text(
+                  value,
+                  style: (isMobile
+                          ? AppTextStyles.get2xlPlusStyle(AppTextStyles.bold)
+                          : AppTextStyles.getHeadingStyle(AppTextStyles.bold))
+                      .copyWith(color: isDarkMode ? AppColors.white : AppColors.gray.shade600),
                 ),
-              ),
-            ],
+                const SizedBox(
+                  width: 16,
+                ),
+                if (constraints.maxWidth < 171)
+                  Expanded(
+                    child: FittedBox(
+                      fit: BoxFit.cover,
+                      child: Text(
+                        title.tr,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: (isMobile
+                                ? AppTextStyles.getXlStyle(AppTextStyles.medium)
+                                : AppTextStyles.get2xlStyle(AppTextStyles.medium))
+                            .copyWith(
+                          color: AppColors.primary,
+                        ),
+                      ),
+                    ),
+                  )
+                else
+                  Text(
+                    title.tr,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: (isMobile
+                            ? AppTextStyles.getXlStyle(AppTextStyles.medium)
+                            : AppTextStyles.get2xlStyle(AppTextStyles.medium))
+                        .copyWith(
+                      color: AppColors.primary,
+                    ),
+                  ),
+              ],
+            ),
           ),
-        ),
-      );
+        );
+      });
     }
 
     return Row(

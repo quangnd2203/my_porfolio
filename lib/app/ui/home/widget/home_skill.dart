@@ -32,13 +32,37 @@ class HomeSkill extends StatelessWidget with ResponsiveScreen {
     );
   }
 
+  Widget builtTitle({bool isMobile = false}) {
+    return RichText(
+      text: TextSpan(
+        text: 'my_skills'.tr,
+        style: (isMobile
+            ? AppTextStyles.getLgStyle(AppTextStyles.bold)
+            : AppTextStyles.getHeadingStyle(AppTextStyles.bold))
+            .copyWith(color: isDarkMode ? AppColors.white : AppColors.gray.shade600),
+        children: <TextSpan>[
+          TextSpan(
+            text: ' ${'overview'.tr}',
+            style: (isMobile
+                ? AppTextStyles.getLgStyle(AppTextStyles.bold)
+                : AppTextStyles.getHeadingStyle(AppTextStyles.bold))
+                .copyWith(color: AppColors.primary),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget buildDesktop(BuildContext context) {
     return SizedBox(
       width: getx.Get.width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: skills.entries.map<Widget>((MapEntry<String, String> e) {
+        children: <Widget>[
+          builtTitle(),
+          const SizedBox(height: 32,),
+        ] + skills.entries.map<Widget>((MapEntry<String, String> e) {
           return Column(
             children: <Widget>[
               RichText(
@@ -69,7 +93,10 @@ class HomeSkill extends StatelessWidget with ResponsiveScreen {
       width: MOBILE_PAGE_MAX_WIDTH,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: skills.entries.map<Widget>((MapEntry<String, String> e) {
+        children:  <Widget>[
+          builtTitle(isMobile: true),
+          const SizedBox(height: 16,),
+        ] + skills.entries.map<Widget>((MapEntry<String, String> e) {
           return Column(
             children: <Widget>[
               RichText(
@@ -77,7 +104,7 @@ class HomeSkill extends StatelessWidget with ResponsiveScreen {
                   children: <TextSpan>[
                     TextSpan(
                       text: e.key,
-                      style: AppTextStyles.getLgStyle(AppTextStyles.medium).copyWith(color: AppColors.primary),
+                      style: AppTextStyles.getBaseStyle(AppTextStyles.medium).copyWith(color: AppColors.primary),
                     ),
                     TextSpan(
                         text: ' ${e.value}',

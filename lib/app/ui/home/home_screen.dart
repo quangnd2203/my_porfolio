@@ -8,6 +8,7 @@ import '../../constants/app_text_styles.dart';
 import '../../constants/app_values.dart';
 import '../widgets/responsive_screen.dart';
 import 'widget/home_about.dart';
+import 'widget/home_projects.dart';
 import 'widget/home_skill.dart';
 import 'widget/info_card.dart';
 
@@ -72,6 +73,13 @@ class _HomeScreenState extends State<HomeScreen> with ResponsiveScreen {
                         'my_skills',
                         const HomeSkill(),
                       ),
+                      const SizedBox(
+                        height: 80,
+                      ),
+                      buildPart(
+                        'my_projects',
+                        const HomeProjects(),
+                      ),
                     ],
                   ),
                 ),
@@ -106,7 +114,19 @@ class _HomeScreenState extends State<HomeScreen> with ResponsiveScreen {
             const SizedBox(
               height: 24,
             ),
-            buildPart('my_skills', const HomeSkill(), isMobile: true),
+            buildPart(
+              'my_skills',
+              const HomeSkill(),
+              isMobile: true,
+            ),
+            const SizedBox(
+              height: 24,
+            ),
+            buildPart(
+              'my_projects',
+              const HomeProjects(),
+              isMobile: true,
+            ),
           ],
         ),
       ),
@@ -149,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> with ResponsiveScreen {
                 ],
               ),
               SizedBox(
-                height: isMobile ? 12 : 48,
+                height: isMobile ? 12 : 36,
               ),
               child,
             ],

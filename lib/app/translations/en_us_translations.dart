@@ -16,4 +16,5 @@ final Map<String, String> enUs = <String, String>{
   'i_am': 'I am',
   'year_of_experience': 'Year of\nExperience',
   'projects_completed': 'Projects\nCompleted',
+  'overview': 'Overview',
 };

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart' as getx;
 
 import '../../blocs/theme/theme_cubit.dart';
@@ -7,6 +8,7 @@ import '../../constants/app_text_styles.dart';
 import '../../constants/app_values.dart';
 import '../widgets/responsive_screen.dart';
 import 'widget/home_about.dart';
+import 'widget/home_skill.dart';
 import 'widget/info_card.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -63,10 +65,12 @@ class _HomeScreenState extends State<HomeScreen> with ResponsiveScreen {
                         'about',
                         const HomeAbout(),
                       ),
-                      const SizedBox(height: 80,),
+                      const SizedBox(
+                        height: 80,
+                      ),
                       buildPart(
                         'my_skills',
-                        const Placeholder(),
+                        const HomeSkill(),
                       ),
                     ],
                   ),
@@ -99,6 +103,10 @@ class _HomeScreenState extends State<HomeScreen> with ResponsiveScreen {
               const HomeAbout(),
               isMobile: true,
             ),
+            const SizedBox(
+              height: 24,
+            ),
+            buildPart('my_skills', const HomeSkill(), isMobile: true),
           ],
         ),
       ),
@@ -111,31 +119,43 @@ class _HomeScreenState extends State<HomeScreen> with ResponsiveScreen {
   }
 
   Widget buildPart(String title, Widget child, {bool isMobile = false}) {
-    return Column(
-      children: <Widget>[
-        Row(
-          children: <Widget>[
-            Text(
-              title.tr,
-              style: (isMobile ? AppTextStyles.getXsStyle(AppTextStyles.regular) : AppTextStyles.getXlStyle(AppTextStyles.regular)).copyWith(
-                color: getx.Get.find<ThemeCubit>().state.isDarkMode ? AppColors.warring.shade600 : AppColors.secondary.shade600,
+    return BlocSelector<ThemeCubit, ThemeState, bool>(
+      bloc: getx.Get.find<ThemeCubit>(),
+      selector: (ThemeState state) => state.isDarkMode,
+      builder: (BuildContext context, bool isDarkMode) {
+        return SizedBox(
+          width: isMobile ? MOBILE_PAGE_MAX_WIDTH : DESKTOP_PAGE_MAX_WIDTH,
+          child: Column(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Text(
+                    title.tr,
+                    style: (isMobile
+                            ? AppTextStyles.getXsStyle(AppTextStyles.regular)
+                            : AppTextStyles.getXlStyle(AppTextStyles.regular))
+                        .copyWith(
+                      color: isDarkMode ? AppColors.warring : AppColors.secondary.shade600,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 14,
+                  ),
+                  Container(
+                    width: 80,
+                    height: 1,
+                    color: isDarkMode ? AppColors.warring.shade600 : AppColors.secondary.shade600,
+                  )
+                ],
               ),
-            ),
-            const SizedBox(
-              width: 14,
-            ),
-            Container(
-              width: 80,
-              height: 1,
-              color: getx.Get.find<ThemeCubit>().state.isDarkMode ? AppColors.warring.shade600 : AppColors.secondary.shade600,
-            )
-          ],
-        ),
-        SizedBox(
-          height: isMobile ? 12 : 48,
-        ),
-        child,
-      ],
+              SizedBox(
+                height: isMobile ? 12 : 48,
+              ),
+              child,
+            ],
+          ),
+        );
+      },
     );
   }
 }

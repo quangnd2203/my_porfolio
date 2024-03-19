@@ -176,6 +176,7 @@ class _NavigationScreenState extends State<NavigationScreen> with ResponsiveScre
               InkWell(
                 child: SvgPicture.asset(
                   AppImages.svg('navigation_setting'),
+                  color: getx.Get.find<ThemeCubit>().state.isDarkMode ? AppColors.white : AppColors.gray.shade600,
                 ),
                 onTap: () {
                   scaffoldKey.currentState!.openEndDrawer();

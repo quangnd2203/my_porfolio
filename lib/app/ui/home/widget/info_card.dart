@@ -95,7 +95,7 @@ class _Desktop extends StatelessWidget {
                 height: 8,
               ),
               Text(
-                'Flutter Developer',
+                'Software Engineer',
                 style: AppTextStyles.getXlStyle(AppTextStyles.regular)
                     .copyWith(color: isDarkMode ? AppColors.warring : AppColors.secondary),
               ),
@@ -256,7 +256,8 @@ class _Mobile extends StatelessWidget {
                     Text(
                       'Nguyen Dang Quang',
                       textAlign: TextAlign.center,
-                      style: AppTextStyles.getXlStyle(AppTextStyles.bold).copyWith(color: AppColors.primary.shade600),
+                      style: AppTextStyles.getXlStyle(AppTextStyles.bold)
+                          .copyWith(color: isDarkMode ? AppColors.white : AppColors.gray.shade600),
                     ),
                     const SizedBox(
                       height: 4,

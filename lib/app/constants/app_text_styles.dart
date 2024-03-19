@@ -4,19 +4,19 @@ import 'package:google_fonts/google_fonts.dart';
 class AppTextStyles {
   AppTextStyles._();
 
-  static TextStyle get regular => GoogleFonts.lekton().copyWith(
+  static TextStyle get regular => GoogleFonts.roboto().copyWith(
         fontWeight: FontWeight.w400,
       );
 
-  static TextStyle get medium => GoogleFonts.lekton().copyWith(
+  static TextStyle get medium => GoogleFonts.roboto().copyWith(
         fontWeight: FontWeight.w500,
       );
 
-  static TextStyle get semiBold => GoogleFonts.lekton().copyWith(
+  static TextStyle get semiBold => GoogleFonts.roboto().copyWith(
         fontWeight: FontWeight.w600,
       );
 
-  static TextStyle get bold => GoogleFonts.lekton().copyWith(
+  static TextStyle get bold => GoogleFonts.roboto().copyWith(
         fontWeight: FontWeight.w700,
       );
 
@@ -59,6 +59,12 @@ class AppTextStyles {
   static TextStyle getXsStyle(TextStyle textStyle) {
     return textStyle.copyWith(
       fontSize: 12,
+    );
+  }
+
+  static TextStyle getHeadingStyle(TextStyle textStyle) {
+    return textStyle.copyWith(
+      fontSize: 48,
     );
   }
 }

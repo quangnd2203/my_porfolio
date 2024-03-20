@@ -2,7 +2,7 @@ version: '3'
 services:
   #Flutter Web Boilerplate
   my_porfolio:
-    container_name: my_porfolio
+    container_name: web
     build:
       context: .
       dockerfile: ./DockerFile
@@ -15,6 +15,16 @@ services:
       - TZ=Asia/HoChiMinh
     networks:
       - api-network
+
+  ngrok:
+    container_name: tunnel
+    image: ngrok/ngrok:alpine
+    environment:
+      NGROK_AUTHTOKEN: '2YvinCXk4MODtzZqArbUD0viSjE_6MFAfHKNNp1XXyhvWi6mF'
+    command: 'http host.docker.internal:8080'
+    ports:
+      - '4040:4040'
+
 
 #Docker Networks
 networks:

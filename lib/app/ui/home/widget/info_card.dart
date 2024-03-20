@@ -289,7 +289,7 @@ class _Mobile extends StatelessWidget {
         IconButton(
           icon: SvgPicture.asset(
             AppImages.svg('Github'),
-            width: 22,
+            width: 30,
             color: isDarkMode ? AppColors.white : AppColors.gray.shade600,
           ),
           onPressed: () {},
@@ -297,7 +297,7 @@ class _Mobile extends StatelessWidget {
         IconButton(
           icon: SvgPicture.asset(
             AppImages.svg('Linkedin'),
-            width: 22,
+            width: 30,
             color: isDarkMode ? AppColors.white : AppColors.gray.shade600,
           ),
           onPressed: () {},
@@ -305,7 +305,7 @@ class _Mobile extends StatelessWidget {
         IconButton(
           icon: SvgPicture.asset(
             AppImages.svg('Facebook'),
-            width: 22,
+            width: 30,
             color: isDarkMode ? AppColors.white : AppColors.gray.shade600,
           ),
           onPressed: () {},
@@ -321,7 +321,7 @@ class _Mobile extends StatelessWidget {
         IconButton(
           icon: SvgPicture.asset(
             AppImages.svg('download'),
-            width: 18,
+            width: 25,
             color: isDarkMode ? AppColors.white : AppColors.gray.shade600,
           ),
           onPressed: () {},
@@ -329,7 +329,7 @@ class _Mobile extends StatelessWidget {
         IconButton(
           icon: SvgPicture.asset(
             AppImages.svg('comment'),
-            width: 18,
+            width: 25,
             color: isDarkMode ? AppColors.white : AppColors.gray.shade600,
           ),
           onPressed: () {},

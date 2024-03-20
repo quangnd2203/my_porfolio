@@ -139,43 +139,45 @@ class _HomeScreenState extends State<HomeScreen> with ResponsiveScreen {
   }
 
   Widget buildPart(String title, Widget child, {bool isMobile = false}) {
-    return BlocSelector<ThemeCubit, ThemeState, bool>(
-      bloc: getx.Get.find<ThemeCubit>(),
-      selector: (ThemeState state) => state.isDarkMode,
-      builder: (BuildContext context, bool isDarkMode) {
-        return SizedBox(
-          width: isMobile ? MOBILE_PAGE_MAX_WIDTH : DESKTOP_PAGE_MAX_WIDTH,
-          child: Column(
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Text(
-                    title.tr,
-                    style: (isMobile
-                            ? AppTextStyles.getXsStyle(AppTextStyles.regular)
-                            : AppTextStyles.getXlStyle(AppTextStyles.regular))
-                        .copyWith(
-                      color: isDarkMode ? AppColors.warring : AppColors.secondary.shade600,
+    return RepaintBoundary(
+      child: BlocSelector<ThemeCubit, ThemeState, bool>(
+        bloc: getx.Get.find<ThemeCubit>(),
+        selector: (ThemeState state) => state.isDarkMode,
+        builder: (BuildContext context, bool isDarkMode) {
+          return SizedBox(
+            width: isMobile ? MOBILE_PAGE_MAX_WIDTH : DESKTOP_PAGE_MAX_WIDTH,
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Text(
+                      title.tr,
+                      style: (isMobile
+                              ? AppTextStyles.getXsStyle(AppTextStyles.regular)
+                              : AppTextStyles.getXlStyle(AppTextStyles.regular))
+                          .copyWith(
+                        color: isDarkMode ? AppColors.warring : AppColors.secondary.shade600,
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    width: 14,
-                  ),
-                  Container(
-                    width: 80,
-                    height: 1,
-                    color: isDarkMode ? AppColors.warring.shade600 : AppColors.secondary.shade600,
-                  )
-                ],
-              ),
-              SizedBox(
-                height: isMobile ? 12 : 36,
-              ),
-              child,
-            ],
-          ),
-        );
-      },
+                    const SizedBox(
+                      width: 14,
+                    ),
+                    Container(
+                      width: 80,
+                      height: 1,
+                      color: isDarkMode ? AppColors.warring.shade600 : AppColors.secondary.shade600,
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: isMobile ? 12 : 36,
+                ),
+                child,
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }
